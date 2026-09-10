@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img">
+  <defs>
+    <linearGradient id="ground" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#f7f2ea"/>
+      <stop offset="1" stop-color="#e8ddcd"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="57%" cy="34%" r="62%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grain" width="18" height="18" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#7a6b57" opacity="0.06"/>
+      <circle cx="11" cy="10" r="1" fill="#7a6b57" opacity="0.06"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="1000" fill="url(#ground)"/>
+  <rect width="800" height="1000" fill="url(#grain)"/>
+  <rect width="800" height="1000" fill="url(#halo)"/>
+  <circle cx="400" cy="500" r="307.52" fill="#ffffff" opacity="0.42"/>
+  <circle cx="400" cy="500" r="337.28000000000003" fill="none" stroke="#b99a62" stroke-width="1" opacity="0.5"/>
+  <g transform="translate(152 252) scale(2.48) rotate(-2 100 100)">
+    
+    <rect x="30" y="52" width="140" height="104" rx="14" fill="#f7f2ea" stroke="#7a6b57" stroke-width="2.4"/>
+    <rect x="42" y="64" width="116" height="80" rx="8" fill="none" stroke="#b99a62" stroke-width="1.8"/>
+    <path d="M62 96c10-14 22-14 30 0s20 14 30 0 22-14 16 4" fill="none" stroke="#7a6b57" stroke-width="3" stroke-linecap="round"/>
+    <path d="M66 118h68" stroke="#b99a62" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M80 130h40" stroke="#b99a62" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="100" cy="42" r="6" fill="none" stroke="#7a6b57" stroke-width="2.2"/>
+  </g>
+</svg>

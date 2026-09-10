@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1100" width="1000" height="1100" role="img">
+  <defs>
+    <linearGradient id="ground" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#edf1e9"/>
+      <stop offset="1" stop-color="#cfd8c7"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="49%" cy="33%" r="62%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grain" width="18" height="18" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#6c7b62" opacity="0.06"/>
+      <circle cx="11" cy="10" r="1" fill="#6c7b62" opacity="0.06"/>
+    </pattern>
+  </defs>
+  <rect width="1000" height="1100" fill="url(#ground)"/>
+  <rect width="1000" height="1100" fill="url(#grain)"/>
+  <rect width="1000" height="1100" fill="url(#halo)"/>
+  <circle cx="500" cy="550" r="384.4" fill="#ffffff" opacity="0.42"/>
+  <circle cx="500" cy="550" r="421.6" fill="none" stroke="#aab5a0" stroke-width="1" opacity="0.5"/>
+  <g transform="translate(190 240) scale(3.1) rotate(-4 100 100)">
+    
+    <path d="M46 104h108l-12 62H58Z" fill="#edf1e9" stroke="#6c7b62" stroke-width="2.4"/>
+    <path d="M58 124h84M56 144h88" stroke="#aab5a0" stroke-width="1.8"/>
+    <path d="M64 104c0-24 16-38 36-38s36 14 36 38" fill="none" stroke="#6c7b62" stroke-width="2.2"/>
+    <circle cx="80" cy="88" r="13" fill="#cfd8c7" stroke="#6c7b62" stroke-width="2"/>
+    <circle cx="112" cy="80" r="16" fill="#cfd8c7" stroke="#6c7b62" stroke-width="2"/>
+    <circle cx="80" cy="88" r="4" fill="#aab5a0"/>
+    <circle cx="112" cy="80" r="5" fill="#aab5a0"/>
+  </g>
+</svg>

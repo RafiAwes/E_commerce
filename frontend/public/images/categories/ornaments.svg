@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800" role="img">
+  <defs>
+    <linearGradient id="ground" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#f3e7e6"/>
+      <stop offset="1" stop-color="#dcc3c3"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="55%" cy="49%" r="62%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grain" width="18" height="18" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#713f46" opacity="0.06"/>
+      <circle cx="11" cy="10" r="1" fill="#713f46" opacity="0.06"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="800" fill="url(#ground)"/>
+  <rect width="800" height="800" fill="url(#grain)"/>
+  <rect width="800" height="800" fill="url(#halo)"/>
+  <circle cx="400" cy="400" r="307.52" fill="#ffffff" opacity="0.42"/>
+  <circle cx="400" cy="400" r="337.28000000000003" fill="none" stroke="#8f5860" stroke-width="1" opacity="0.5"/>
+  <g transform="translate(152 152) scale(2.48) rotate(0 100 100)">
+    
+    <path d="M100 18v20" stroke="#713f46" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M88 22a12 12 0 0 1 24 0" fill="none" stroke="#713f46" stroke-width="2.2"/>
+    <rect x="90" y="38" width="20" height="14" rx="4" fill="#dcc3c3" stroke="#713f46" stroke-width="2.2"/>
+    <circle cx="100" cy="112" r="58" fill="#f3e7e6" stroke="#713f46" stroke-width="2.4"/>
+    <path d="M46 96c34 16 74 16 108 0" fill="none" stroke="#8f5860" stroke-width="2.6"/>
+    <path d="M46 128c34-16 74-16 108 0" fill="none" stroke="#8f5860" stroke-width="2.6"/>
+    <circle cx="100" cy="112" r="20" fill="none" stroke="#8f5860" stroke-width="2.6"/>
+    <circle cx="80" cy="94" r="3.4" fill="#8f5860"/>
+  </g>
+</svg>

@@ -1,0 +1,60 @@
+import type { Recipient } from "@/types/common";
+
+export const recipients: readonly Recipient[] = [
+  {
+    id: "her",
+    slug: "her",
+    name: "For Her",
+    tagline: "Soft, elegant and quietly personal.",
+    description: "Scent, jewellery and keepsakes chosen for their finish as much as their form.",
+    image: "/images/recipients/her.svg",
+  },
+  {
+    id: "him",
+    slug: "him",
+    name: "For Him",
+    tagline: "Understated pieces with weight to them.",
+    description: "Brass, walnut and marble — gifts that look better on a desk than in a drawer.",
+    image: "/images/recipients/him.svg",
+  },
+  {
+    id: "couples",
+    slug: "couples",
+    name: "For Couples",
+    tagline: "Two names, one keepsake.",
+    description: "Paired ornaments, engraved plaques and gifts built around a shared story.",
+    image: "/images/recipients/couples.svg",
+  },
+  {
+    id: "parents",
+    slug: "parents",
+    name: "For Parents",
+    tagline: "Gifts that get used, and kept.",
+    description: "Home pieces and framed memories for the people who started it all.",
+    image: "/images/recipients/parents.svg",
+  },
+  {
+    id: "friends",
+    slug: "friends",
+    name: "For Friends",
+    tagline: "Generous without being grand.",
+    description: "Hampers, candles and little luxuries for the friendships worth marking.",
+    image: "/images/recipients/friends.svg",
+  },
+  {
+    id: "kids",
+    slug: "kids",
+    name: "For Kids",
+    tagline: "Keepsakes they grow into.",
+    description: "Ornaments and personalized pieces made to be unwrapped now and kept for later.",
+    image: "/images/recipients/kids.svg",
+  },
+  {
+    id: "colleagues",
+    slug: "colleagues",
+    name: "For Colleagues",
+    tagline: "Professional, warm, never generic.",
+    description: "Desk-friendly gifts and hampers that travel well between offices.",
+    image: "/images/recipients/colleagues.svg",
+  },
+];
