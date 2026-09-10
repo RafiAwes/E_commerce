@@ -10,6 +10,39 @@ Built with **Next.js 16 (App Router)**, **React 19**, **TypeScript (strict)**,
 
 ---
 
+## What works
+
+Nothing here is a decorative stub — every control does the thing it says.
+
+**Discovery**
+- Mega menu, mobile drawer navigation and a thumb-reachable bottom bar
+- Search overlay with live autocomplete over a compact client-side index
+- Filter by category, occasion, recipient, colour, price band and availability
+- Sort by recommended, newest, price (both ways) and rating
+- Facet counts that react to the *other* filters, and removable filter chips
+- Gift finder: pick a recipient, occasion and budget, get scored
+  recommendations with the reason each one was chosen
+
+**Product**
+- Thumbnail gallery with keyboard navigation
+- Size variants and finish swatches that reprice the line
+- Personalization with a live engraving preview and validation
+- Details, delivery, reviews and FAQ tabs; rating distribution; related products
+
+**Commerce**
+- Cart drawer and full cart page sharing one set of totals
+- Wishlist with move-to-bag, persisted per browser and synced across tabs
+- Gift wrapping, promo codes (`AURELIA10`, `MOMENTS15`), free-delivery meter
+- Five-step checkout with validation, then a real order confirmation you can
+  refresh and share by reference
+
+**Everywhere**
+- Empty, loading and error states designed to match the rest of the store
+- Toasts announced through a live region
+- Static generation for all 30 product pages and 5 collection pages
+
+---
+
 ## Getting started
 
 ```bash
@@ -69,12 +102,45 @@ data         the mock catalogue
 ```
 
 `components/ui` and `components/shared` sit outside this chain: they are
-generic and never import a feature, a service or the data layer. This is
-enforced by convention and is easy to verify:
+generic and never import a feature, a service or the data layer.
+[Quality gates](#quality-gates) has the one-liners that verify every rule
+above.
 
-```bash
-grep -rn "@/features\|@/services\|@/repositories\|@/data" src/components/ui/   # no matches
-grep -rn "@/repositories\|@/data" src/features/ src/app/                        # no matches
+```
+src/
+├── app/                      routes only — composition, metadata, data fetching
+│   ├── (storefront)/         shared chrome: header, footer, bottom nav
+│   │   ├── page.tsx          homepage
+│   │   ├── shop/             catalogue
+│   │   ├── products/[slug]/  product detail
+│   │   ├── collections/      index + [slug]
+│   │   ├── occasions/        index + [slug]
+│   │   ├── wishlist/  cart/  checkout/ (+ success/)
+│   │   └── not-found.tsx
+│   ├── layout.tsx  loading.tsx  error.tsx  not-found.tsx
+│   ├── sitemap.ts  robots.ts   globals.css   ← design tokens live here
+│
+├── components/
+│   ├── ui/                   18 design-system primitives
+│   ├── shared/               reusable commerce presentation
+│   ├── layout/               header, mega menu, footer, navigation
+│   └── home/                 homepage sections
+│
+├── features/                 catalog · product · cart · wishlist ·
+│   └── <feature>/            gift-finder · checkout
+│       ├── components/       feature UI
+│       ├── lib/              pure logic — no React, no DOM
+│       ├── hooks/            only where a feature needs one
+│       ├── types.ts
+│       └── index.ts          public surface
+│
+├── services/                 application-facing data access
+├── repositories/             interfaces + mock implementations
+│   └── index.ts              composition root
+├── providers/                cart · wishlist · search · app shell
+├── lib/                      utils, formatters, validations, catalog algorithms
+├── data/                     the mock catalogue
+└── types/common.ts           the domain model
 ```
 
 ### Where things live
@@ -94,6 +160,26 @@ grep -rn "@/repositories\|@/data" src/features/ src/app/                        
 | `src/components/shared/` | Reusable commerce presentation (`Price`, `Rating`, `TileCard`, …) |
 | `src/components/layout/` | Header, mega menu, footer, mobile and bottom navigation |
 | `src/components/home/` | Homepage sections (presentational; the page fetches their data) |
+
+### Domain model
+
+`src/types/common.ts` is the contract every layer agrees on. Repositories map
+raw sources into these types, services return them, and components consume
+them — so changing the data source never changes this file.
+
+| Type | Notes |
+| --- | --- |
+| `Product` | Plus `ProductImage`, `ProductVariant`, `PersonalizationSpec` |
+| `ProductCategory`, `Occasion`, `Recipient`, `ColorOption` | Taxonomy; ids are closed unions |
+| `Collection` | An editorial edit — its product order *is* the merchandising order |
+| `Review` | `productSlug: null` marks a store-level testimonial |
+| `CartItem` | A price/name **snapshot**, so a persisted cart survives catalogue edits |
+| `WishlistItem` | A **reference**, so saved items always show the current price |
+| `OrderSummary`, `CheckoutData`, `Order` | Checkout and confirmation |
+
+Ids such as `CategoryId` and `OccasionId` are string unions with matching
+runtime guards in `lib/catalog/taxonomy.ts`, so URL parsing can reject unknown
+values instead of casting untrusted strings into domain types.
 
 ### Server first
 
@@ -200,6 +286,35 @@ in `next.config.ts` under `images.remotePatterns`) and update the URLs in
 `src/data`. Product image paths are centralised in `src/data/products.ts` — no
 component hardcodes an image URL. Once no SVGs remain you can also remove
 `dangerouslyAllowSVG` from `next.config.ts`.
+
+---
+
+## Quality gates
+
+```bash
+npm run typecheck   # strict, plus noUncheckedIndexedAccess
+npm run lint        # eslint-config-next + React Compiler rules
+npm run build       # type-checks again and pre-renders every product page
+```
+
+All three pass clean. The codebase contains no `any`, no `@ts-ignore`, no
+`console` calls outside the error boundary, and no unused eslint-disable
+directives.
+
+The layering rules are verifiable rather than aspirational:
+
+```bash
+# Generic UI never reaches into business code
+grep -rn "@/features\|@/services\|@/repositories\|@/data" src/components/ui/
+
+# Features and routes never touch data or repositories directly
+grep -rn "@/repositories\|@/data" src/features/ src/app/
+
+# Repositories and services never reach back up into UI
+grep -rn "@/features\|@/components" src/repositories/ src/services/
+```
+
+Each returns nothing.
 
 ---
 
