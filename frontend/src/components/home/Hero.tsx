@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { StoreImage as Image } from "@/components/shared/StoreImage";
 import Link from "next/link";
 import { ArrowRight, Gift, Star, Truck } from "lucide-react";
 import { buttonStyles } from "@/components/ui/Button";

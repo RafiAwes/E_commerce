@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { StoreImage as Image } from "@/components/shared/StoreImage";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { MegaMenuData } from "./navigation";

@@ -1,7 +1,7 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
-import { SearchOverlay } from "@/components/layout/SearchOverlay";
 import type { SearchIndexItem } from "@/lib/catalog/search-index";
 
 interface SearchContextValue {
@@ -11,6 +11,15 @@ interface SearchContextValue {
 }
 
 const SearchContext = createContext<SearchContextValue | null>(null);
+
+/**
+ * The overlay is only ever seen after a deliberate click, so its code should
+ * not be part of the bundle every visitor downloads. Rendering it lazily and
+ * conditionally means the chunk is fetched the first time search is opened.
+ */
+const SearchOverlay = dynamic(() => import("@/components/layout/SearchOverlay").then((m) => m.SearchOverlay), {
+  ssr: false,
+});
 
 /**
  * Owns the search overlay so any trigger — desktop header, mobile bar, bottom
@@ -26,7 +35,7 @@ export function SearchProvider({ index, children }: { index: readonly SearchInde
   return (
     <SearchContext.Provider value={value}>
       {children}
-      <SearchOverlay open={isOpen} onClose={close} index={index} />
+      {isOpen ? <SearchOverlay open onClose={close} index={index} /> : null}
     </SearchContext.Provider>
   );
 }

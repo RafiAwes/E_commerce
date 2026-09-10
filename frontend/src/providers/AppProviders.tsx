@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { CartDrawer } from "@/features/cart/components/CartDrawer";
+import { CartDrawerMount } from "@/features/cart/components/CartDrawerMount";
 import { ToastProvider } from "@/components/ui/Toast";
 import type { SearchIndexItem } from "@/lib/catalog/search-index";
 import { CartProvider } from "./CartProvider";
@@ -21,7 +21,7 @@ export function AppProviders({ searchIndex, children }: { searchIndex: readonly 
         <CartProvider>
           <SearchProvider index={searchIndex}>
             {children}
-            <CartDrawer />
+            <CartDrawerMount />
           </SearchProvider>
         </CartProvider>
       </WishlistProvider>

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { StoreImage as Image } from "@/components/shared/StoreImage";
 import { Gift, MessageSquareHeart } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";

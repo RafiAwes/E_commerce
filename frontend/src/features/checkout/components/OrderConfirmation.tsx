@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { StoreImage as Image } from "@/components/shared/StoreImage";
 import Link from "next/link";
 import { CheckCircle2, PackageX, Truck } from "lucide-react";
 import { useEffect, useState } from "react";

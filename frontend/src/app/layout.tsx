@@ -15,7 +15,8 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
   display: "swap",
-  weight: ["400", "500", "600"],
+  // Headings render at 500; 400 covers the italic display copy.
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {

@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { StoreImage as Image } from "@/components/shared/StoreImage";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Banknote, CreditCard, Gift, Loader2, Lock, Smartphone } from "lucide-react";

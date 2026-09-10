@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { StoreImage as Image } from "./StoreImage";
 import type { ReactNode } from "react";
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/utils";

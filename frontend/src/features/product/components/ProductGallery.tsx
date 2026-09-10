@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { StoreImage as Image } from "@/components/shared/StoreImage";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import type { ProductImage } from "@/types/common";

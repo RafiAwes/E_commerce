@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { StoreImage as Image } from "./StoreImage";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 

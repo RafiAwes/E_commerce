@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { StoreImage as Image } from "@/components/shared/StoreImage";
 import Link from "next/link";
 import { InstagramIcon } from "@/components/shared/BrandIcons";
 import { Container } from "@/components/ui/Container";
